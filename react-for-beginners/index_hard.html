@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <!-- react 사용을 위해서 1.react 2.react-dom import -->
+  <!-- react-dom은 React element들을 HTML body에 둘 수 있도록 해준다 -->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script>
+    const root = document.getElementById("root");
+    const h3 = React.createElement(
+      "h3",
+      {
+        onMouseEnter: () => console.log("mouse enter"),
+      },
+      "Hello I'm a span"
+    );
+    const btn = React.createElement(
+      "button",
+      {
+        onClick: () => console.log("im clicked"),
+        style: {
+          backgroundColor: "tomato",
+        },
+      }, // 자동완성은 onclick인데 그렇게 입력하면 클릭이벤트 작동 안함
+      "Click me"
+    );
+    const container = React.createElement("div", null, [h3, btn]);
+    ReactDOM.render(container, root); // 사용자에게 보여준다
+  </script>
+</html>
