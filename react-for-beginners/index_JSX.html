@@ -10,21 +10,20 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    let counter = 0;
-    function countUp() {
-      counter = counter + 1;
-      render();
-    }
-    function render() {
-      ReactDOM.render(<Container />, root);
-    }
+    
     // 컴포넌트의 첫 글자는 반드시 대문자여야 한다
-    const Container = () => (
-      <div>
+    function App() {
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter(counter + 1);
+      }
+      return (
+        <div>
         <h3>Total clicks: {counter}</h3>
-        <button onClick={countUp}>Click me</button>
+        <button onClick={onClick}>Click me</button>
       </div>
-    );
-    render(); // 사용자에게 보여준다
+      );
+    }
+    ReactDOM.render(<App />, root); // 사용자에게 보여준다
   </script>
 </html>
